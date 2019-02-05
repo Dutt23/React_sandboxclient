@@ -9,7 +9,8 @@ class AddContact extends Component {
     this.state = {
       name: "",
       email: "",
-      phone: ""
+      phone: "",
+      errors: {}
     };
   }
 
@@ -19,7 +20,37 @@ class AddContact extends Component {
 
   onSubmit = dispatch => e => {
     e.preventDefault();
+    // Check for errors
+
     const { name, email, phone } = this.state;
+
+    if (name === "") {
+      this.setState({
+        errors: {
+          name: "Name is required"
+        }
+      });
+      return;
+    }
+
+    if (email === "") {
+      this.setState({
+        errors: {
+          email: "Email is required"
+        }
+      });
+      return;
+    }
+
+    if (phone === "") {
+      this.setState({
+        errors: {
+          phone: "Phone is required"
+        }
+      });
+      return;
+    }
+
     const newContact = {
       id: uuid(),
       name,
@@ -33,12 +64,13 @@ class AddContact extends Component {
     this.setState({
       name: "",
       email: "",
-      phone: ""
+      phone: "",
+      errors: {}
     });
   };
 
   render() {
-    const { name, email, phone } = this.state;
+    const { name, email, phone, errors } = this.state;
     return (
       <Consumer>
         {value => {
@@ -57,6 +89,7 @@ class AddContact extends Component {
                       onChange={this.onChange.bind(this)}
                       value={name}
                       label="Name"
+                      error={errors.name}
                     />
 
                     {/* <label htmlFor="name">Name</label>
@@ -77,6 +110,7 @@ class AddContact extends Component {
                       onChange={this.onChange.bind(this)}
                       value={email}
                       label="Email"
+                      error={errors.email}
                     />
                     {/* <label htmlFor="email">Email</label>
                     <input
@@ -96,6 +130,7 @@ class AddContact extends Component {
                       onChange={this.onChange.bind(this)}
                       value={phone}
                       label="Phone"
+                      error={errors.phone}
                     />
                     {/* <label htmlFor="phone">Phone</label>
                     <input
