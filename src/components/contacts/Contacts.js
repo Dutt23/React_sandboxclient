@@ -12,7 +12,15 @@ class Contacts extends Component {
           contactInfo = contacts.map((contact, i) => (
             <Contact key={i} contact={contact} />
           ));
-          return <React.Fragment>{contactInfo}</React.Fragment>;
+          return (
+            <React.Fragment>
+              <h1 className="display-4 mb-2">
+                <span className="text-danger">Contact</span>
+                List
+              </h1>
+              {contactInfo}
+            </React.Fragment>
+          );
         }}
       </Consumer>
     );
