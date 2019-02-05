@@ -15,8 +15,8 @@ class App extends Component {
         <div className="App">
           <Header branding={branding} />
           <div className="container">
-            {/* <AddContact /> */}
-            <AddContact1 />
+            <AddContact />
+            {/* <AddContact1 /> */}
             <Contacts />
           </div>
         </div>
