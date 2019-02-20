@@ -7,6 +7,7 @@ import Header from "./components/layout/Header";
 import Contacts from "./components/contacts/Contacts";
 import AddContact from "./components/contacts/AddContact";
 import AddContact1 from "./components/contacts/AddContact1";
+import EditContact from "./components/contacts/EditContact";
 import { Provider } from "./context";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -25,7 +26,8 @@ class App extends Component {
                 {/* <Route exact path="/about/:id/:name" component={About} /> */}
                 <Route exact path="/about" component={About} />
                 <Route exact path="/contact/add" component={AddContact} />
-                <Route exact path="/test" component={Test} />
+                <Route exact path="/contact/edit/:id" component={EditContact} />
+                {/* <Route exact path="/test" component={Test} /> */}
                 <Route component={NotFound} />
               </Switch>
 
